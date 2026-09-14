@@ -1,33 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { siteConfig, getContactAction } from '../data/config';
-import { X, Phone, MessageSquare, Copy, Check, ExternalLink, MapPin } from 'lucide-react';
+import { X, Phone, MessageSquare, Copy, Check, ExternalLink, MapPin, Sparkles, Send } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 
 export default function OrderModal({ isOpen, onClose, selectedProduct }) {
   if (!isOpen) return null;
 
+  // Template pesan lengkap & profesional
+  const getInitialMessage = () => {
+    if (selectedProduct) {
+      return `Halo Gelora Bakery Kabanjahe! Saya ingin memesan ${selectedProduct.name}${selectedProduct.category ? ` (${selectedProduct.category})` : ''}. Apakah stok fresh hari ini masih tersedia di toko Jl. Kpt. Bangsi Sembiring No.24? Boleh info ketersediaan dan cara pemesanannya ya. Terima kasih!`;
+    }
+    return `Halo Gelora Bakery Kabanjahe! Saya ingin menanyakan varian roti fresh dan batch panggangan yang masih tersedia untuk hari ini di toko Jl. Kpt. Bangsi Sembiring No.24. Apakah masih ada stok untuk dibeli hari ini? Terima kasih!`;
+  };
+
+  const [messageText, setMessageText] = useState(getInitialMessage());
   const [copied, setCopied] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState(
-    selectedProduct ? `Tanya produk: ${selectedProduct.name}` : "Tanya ketersediaan roti fresh hari ini"
-  );
+  const [activeTemplateKey, setActiveTemplateKey] = useState(selectedProduct ? 'custom' : 'fresh');
 
-  const contact = getContactAction(selectedTopic);
+  useEffect(() => {
+    setMessageText(getInitialMessage());
+    setActiveTemplateKey(selectedProduct ? 'custom' : 'fresh');
+    setCopied(false);
+  }, [selectedProduct]);
 
-  const handleCopyText = () => {
-    const textToCopy = `Halo Gelora Bakery Kabanjahe, saya ingin ${selectedTopic.toLowerCase()}. Apakah masih tersedia?`;
-    navigator.clipboard.writeText(textToCopy);
+  const contact = getContactAction(messageText);
+
+  const templates = [
+    {
+      key: 'fresh',
+      label: 'Roti Fresh Hari Ini',
+      text: 'Halo Gelora Bakery Kabanjahe! Saya ingin menanyakan varian roti fresh dan batch panggangan yang masih tersedia untuk hari ini di toko Jl. Kpt. Bangsi Sembiring No.24. Apakah masih ada stok untuk dibeli hari ini? Terima kasih!',
+    },
+    {
+      key: 'snack-box',
+      label: 'Snack Box Acara / Arisan',
+      text: 'Halo Gelora Bakery Kabanjahe! Saya ingin memesan paket snack box / aneka kue untuk acara keluarga/kantor di Kabanjahe. Boleh minta info rekomendasi menu isian, minimal pemesanan, dan estimasi waktu persiapannya? Terima kasih!',
+    },
+    {
+      key: 'oleh-oleh',
+      label: 'Paket Oleh-Oleh Kabanjahe',
+      text: 'Halo Gelora Bakery Kabanjahe! Saya ingin memesan paket kotak oleh-oleh khas Kabanjahe (bolu gulung / butter cake / roti manis) untuk buah tangan perjalanan. Apakah bisa disiapkan dalam kotak rapi dan aman untuk dibawa perjalanan? Terima kasih!',
+    },
+    {
+      key: 'butter-cake',
+      label: 'Butter Cake Tradisi 1975',
+      text: 'Halo Gelora Bakery Kabanjahe! Saya tertarik memesan Classic Butter Cake Tradisi resep asli 1975. Apakah hari ini tersedia loyang fresh atau bisa dipesan untuk diambil kapan? Terima kasih!',
+    },
+  ];
+
+  const handleSelectTemplate = (tpl) => {
+    setActiveTemplateKey(tpl.key);
+    setMessageText(tpl.text);
+    setCopied(false);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(messageText);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleSendToDm = () => {
+    // 1. Otomatis copy isi pesan ke clipboard
+    navigator.clipboard.writeText(messageText);
+    setCopied(true);
+    
+    // 2. Buka Direct Message Instagram secara otomatis
+    window.open(contact.url, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-chocolate-950/70 backdrop-blur-sm animate-fadeIn">
       <div 
-        className="bg-cream-50 w-full max-w-lg rounded-3xl shadow-2xl border border-cream-200 overflow-hidden relative"
+        className="bg-cream-50 w-full max-w-lg rounded-3xl shadow-2xl border border-cream-200 overflow-hidden relative max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="bg-chocolate-950 text-cream-50 p-6 flex items-center justify-between">
+        <div className="bg-chocolate-950 text-cream-50 p-5 sm:p-6 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <img
               src="/logo.jpg"
@@ -35,8 +85,8 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
               className="w-10 h-10 rounded-full object-cover border border-caramel-500"
             />
             <div>
-              <h3 className="font-serif text-lg font-bold">Pesan / Tanya Produk</h3>
-              <p className="text-xs text-caramel-400">Gelora Bakery Kabanjahe</p>
+              <h3 className="font-serif text-lg font-bold">Konsultasi & Pesan Cepat</h3>
+              <p className="text-xs text-caramel-400">Direct Chat {siteConfig.brand.instagramHandle}</p>
             </div>
           </div>
           <button
@@ -48,17 +98,17 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div className="p-6 space-y-6">
+        {/* Modal Body (Scrollable) */}
+        <div className="p-5 sm:p-6 space-y-5 overflow-y-auto">
           
-          {/* Selected Product Context if any */}
+          {/* Selected Product Banner if clicked from product card */}
           {selectedProduct && (
-            <div className="bg-cream-100 p-3.5 rounded-xl border border-cream-200 flex items-center gap-3">
+            <div className="bg-cream-100 p-3 rounded-2xl border border-cream-200 flex items-center gap-3">
               {selectedProduct.image && (
                 <img
                   src={selectedProduct.image}
                   alt={selectedProduct.name}
-                  className="w-12 h-12 rounded-lg object-cover"
+                  className="w-12 h-12 rounded-xl object-cover border border-cream-300 flex-shrink-0"
                 />
               )}
               <div className="text-xs">
@@ -68,85 +118,103 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
                 <p className="font-serif text-sm font-bold text-chocolate-900">
                   {selectedProduct.name}
                 </p>
+                <p className="text-chocolate-600 text-[11px]">{selectedProduct.category}</p>
               </div>
             </div>
           )}
 
-          {/* Quick Topic Selector */}
+          {/* Preset Template Selector */}
           <div>
-            <label className="block text-xs font-semibold text-chocolate-800 uppercase tracking-wider mb-2">
-              Keperluan Anda:
+            <label className="block text-xs font-bold text-chocolate-900 uppercase tracking-wider mb-2">
+              Pilih Topik Pertanyaan:
             </label>
-            <div className="grid grid-cols-1 gap-2">
-              {[
-                "Tanya ketersediaan roti fresh hari ini",
-                "Pesan snack box untuk acara / arisan",
-                "Pesan paket oleh-oleh khas Kabanjahe",
-                "Tanya varian butter cake tradisi",
-              ].map((topic) => (
+            <div className="grid grid-cols-2 gap-2">
+              {templates.map((tpl) => (
                 <button
-                  key={topic}
+                  key={tpl.key}
                   type="button"
-                  onClick={() => setSelectedTopic(topic)}
-                  className={`text-left text-xs px-3.5 py-2.5 rounded-xl border transition-all ${
-                    selectedTopic === topic
-                      ? 'bg-chocolate-900 text-cream-50 border-chocolate-900 font-medium'
-                      : 'bg-cream-100/60 text-chocolate-800 border-cream-200 hover:bg-cream-100'
+                  onClick={() => handleSelectTemplate(tpl)}
+                  className={`text-left text-xs px-3 py-2 rounded-xl border transition-all ${
+                    activeTemplateKey === tpl.key
+                      ? 'bg-chocolate-900 text-cream-50 border-chocolate-900 font-semibold shadow-sm'
+                      : 'bg-cream-100/70 text-chocolate-800 border-cream-200 hover:bg-cream-200'
                   }`}
                 >
-                  {topic}
+                  {tpl.label}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Primary Action Button (Dynamic WhatsApp or Instagram) */}
-          <div className="space-y-3">
-            <a
-              href={contact.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-caramel-600 hover:bg-caramel-500 text-cream-50 font-semibold text-sm transition-all shadow-md text-center"
+          {/* Full Message Textarea (Editable & Viewable) */}
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-xs font-bold text-chocolate-900 uppercase tracking-wider">
+                Isi Pesan Lengkap Siap Kirim:
+              </label>
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="inline-flex items-center gap-1 text-xs text-caramel-700 font-semibold hover:text-caramel-800"
+              >
+                {copied ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                <span>{copied ? 'Tersalin!' : 'Salin Pesan'}</span>
+              </button>
+            </div>
+            
+            <textarea
+              value={messageText}
+              onChange={(e) => setMessageText(e.target.value)}
+              rows={4}
+              className="w-full text-xs p-3 rounded-xl border border-cream-300 bg-white text-chocolate-900 focus:outline-none focus:ring-2 focus:ring-caramel-500/50 leading-relaxed font-sans resize-none"
+              placeholder="Tulis pesan Anda di sini..."
+            />
+            
+            {copied && (
+              <p className="text-[11px] text-emerald-700 font-medium mt-1 flex items-center gap-1 animate-fadeIn">
+                <Check size={13} />
+                <span>Teks pesan otomatis disalin ke clipboard! Siap di-paste di chat.</span>
+              </p>
+            )}
+          </div>
+
+          {/* Primary Action Button: Auto-Copy & Open Direct DM */}
+          <div className="space-y-2.5 pt-1">
+            <button
+              onClick={handleSendToDm}
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-caramel-600 hover:bg-caramel-500 text-cream-50 font-semibold text-sm transition-all shadow-md active:scale-[0.99] text-center"
             >
               {contact.type === 'whatsapp' ? (
                 <>
                   <MessageSquare size={18} />
-                  <span>Kirim Pesan via WhatsApp</span>
+                  <span>Kirim Pesan WhatsApp Sekarang</span>
                 </>
               ) : (
                 <>
                   <InstagramIcon size={18} />
-                  <span>Kirim DM Instagram ({siteConfig.brand.instagramHandle})</span>
+                  <span>Kirim DM Instagram (Auto-Copy & Buka Chat)</span>
                 </>
               )}
-              <ExternalLink size={15} />
-            </a>
+              <Send size={15} className="ml-1" />
+            </button>
 
-            {/* Direct Phone Call Alternative */}
+            {/* Direct Phone Call Option */}
             <a
               href={`tel:${siteConfig.brand.phoneRaw}`}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-cream-100 hover:bg-cream-200 border border-cream-300 text-chocolate-900 font-semibold text-sm transition-colors text-center"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-cream-100 hover:bg-cream-200 border border-cream-300 text-chocolate-900 font-semibold text-xs transition-colors text-center"
             >
-              <Phone size={16} className="text-caramel-600" />
-              <span>Telepon Toko: {siteConfig.brand.phone}</span>
+              <Phone size={15} className="text-caramel-600" />
+              <span>Hubungi Telepon Toko: {siteConfig.brand.phone}</span>
             </a>
           </div>
 
-          {/* Copy Message Helper */}
-          <div className="p-3 bg-cream-100 rounded-xl border border-cream-200 flex items-center justify-between text-xs text-chocolate-700">
-            <span className="truncate pr-2 italic">
-              "Halo Gelora Bakery, saya ingin {selectedTopic.toLowerCase()}..."
-            </span>
-            <button
-              onClick={handleCopyText}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-caramel-700 hover:text-caramel-600 flex-shrink-0"
-            >
-              {copied ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
-              <span>{copied ? 'Tersalin' : 'Salin Teks'}</span>
-            </button>
+          {/* Instructions note */}
+          <div className="bg-cream-100/70 p-3 rounded-xl border border-cream-200 text-[11px] text-chocolate-600 leading-normal">
+            <p className="font-semibold text-chocolate-900 mb-0.5">Cara Kerja Chat:</p>
+            <p>Saat tombol diklik, pesan di atas otomatis disalin dan layar chat Instagram <span className="font-semibold text-chocolate-900">{siteConfig.brand.instagramHandle}</span> langsung terbuka. Cukup tekan <strong>Paste (Tempel)</strong> lalu kirim!</p>
           </div>
 
-          {/* Location Reminder */}
+          {/* Store Location Footer Note */}
           <div className="text-[11px] text-chocolate-600 flex items-center gap-1.5 pt-2 border-t border-cream-200">
             <MapPin size={13} className="text-caramel-600 flex-shrink-0" />
             <span>{siteConfig.brand.fullAddress} ({siteConfig.brand.landmark})</span>

@@ -100,16 +100,26 @@ export default function LocationSection() {
                     <h4 className="text-xs font-semibold text-caramel-700 uppercase tracking-wider mb-1">
                       Instagram Resmi
                     </h4>
-                    <a
-                      href={siteConfig.brand.instagramUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-base font-bold text-chocolate-900 hover:text-caramel-600 transition-colors block"
-                    >
-                      {siteConfig.brand.instagramHandle}
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={siteConfig.brand.instagramDmUrl || `https://ig.me/m/${siteConfig.brand.instagramHandle.replace('@', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-base font-bold text-chocolate-900 hover:text-caramel-600 transition-colors"
+                      >
+                        {siteConfig.brand.instagramHandle}
+                      </a>
+                      <a
+                        href={siteConfig.brand.instagramDmUrl || `https://ig.me/m/${siteConfig.brand.instagramHandle.replace('@', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] font-semibold bg-caramel-100 text-caramel-700 px-2 py-0.5 rounded-md hover:bg-caramel-200 transition-colors"
+                      >
+                        Buka DM
+                      </a>
+                    </div>
                     <p className="text-xs text-chocolate-600 mt-0.5">
-                      Direct Message & update produk harian
+                      Direct Message langsung & update produk harian
                     </p>
                   </div>
                 </div>

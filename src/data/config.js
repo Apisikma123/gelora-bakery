@@ -24,6 +24,7 @@ export const siteConfig = {
     whatsapp: "", 
     instagramHandle: "@gelorabakery.id",
     instagramUrl: "https://www.instagram.com/gelorabakery.id/",
+    instagramDmUrl: "https://ig.me/m/gelorabakery.id",
     openingHours: "Senin – Minggu: 07.00 – 21.00 WIB",
     mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.316886475753!2d98.4908!3d3.1783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMTAnNDEuOSJOIDk4wrAyOScyNi45IkU!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid",
     mapsDirectionsUrl: "https://www.google.com/maps/search/?api=1&query=Jl.+Kpt.+Bangsi+Sembiring+No.24+Kabanjahe",
@@ -249,12 +250,13 @@ export function getContactAction(customMessage = "") {
     };
   }
 
-  // Fallback ke Instagram DM
+  // Fallback ke Instagram DM (Auto direct chat via ig.me)
+  const dmUrl = siteConfig.brand.instagramDmUrl || `https://ig.me/m/${instagramHandle.replace('@', '')}`;
   return {
     type: "instagram",
-    label: `Tanya via Instagram (${instagramHandle})`,
+    label: `Kirim DM Instagram (${instagramHandle})`,
     shortLabel: "Instagram DM",
-    url: instagramUrl,
+    url: dmUrl,
     target: "_blank",
     rel: "noopener noreferrer",
     detail: instagramHandle,
