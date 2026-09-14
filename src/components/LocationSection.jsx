@@ -1,5 +1,5 @@
 import { siteConfig } from '../data/config';
-import { MapPin, Clock, Phone, Navigation, Compass } from 'lucide-react';
+import { MapPin, Clock, Phone, Navigation, Compass, Landmark, Building2, Car } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 
 export default function LocationSection() {
@@ -161,45 +161,50 @@ export default function LocationSection() {
 
             {/* Landmark Guidance Points */}
             <div className="p-6 bg-cream-100/70 border-b border-cream-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-chocolate-800">
-              <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                <p className="font-bold text-chocolate-900 mb-1">🏛 Tugu Bambu Runcing</p>
-                <p className="text-chocolate-600">Berada sangat dekat di ruas Jl. Kpt. Bangsi Sembiring</p>
+              <div className="p-3.5 bg-cream-50 rounded-xl border border-cream-200 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5 text-chocolate-900 font-bold">
+                    <Landmark size={15} className="text-caramel-600 flex-shrink-0" />
+                    <span>Tugu Bambu Runcing</span>
+                  </div>
+                  <p className="text-chocolate-600 leading-relaxed">Berada sangat dekat di ruas Jl. Kpt. Bangsi Sembiring</p>
+                </div>
+                <span className="text-[10px] text-caramel-700 font-semibold uppercase tracking-wider mt-2.5">Patokan Utama</span>
               </div>
-              <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                <p className="font-bold text-chocolate-900 mb-1">💊 Apotik Bethesda</p>
-                <p className="text-chocolate-600">Posisi toko tepat di sekitar area Apotik Bethesda</p>
+              <div className="p-3.5 bg-cream-50 rounded-xl border border-cream-200 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5 text-chocolate-900 font-bold">
+                    <Building2 size={15} className="text-caramel-600 flex-shrink-0" />
+                    <span>Apotik Bethesda</span>
+                  </div>
+                  <p className="text-chocolate-600 leading-relaxed">Posisi toko tepat bersebelahan di sekitar area apotik</p>
+                </div>
+                <span className="text-[10px] text-caramel-700 font-semibold uppercase tracking-wider mt-2.5">Area Toko</span>
               </div>
-              <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                <p className="font-bold text-chocolate-900 mb-1">🚗 Akses Mudah</p>
-                <p className="text-chocolate-600">Dapat dijangkau dengan mudah menggunakan kendaraan pribadi / angkutan</p>
+              <div className="p-3.5 bg-cream-50 rounded-xl border border-cream-200 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5 text-chocolate-900 font-bold">
+                    <Car size={15} className="text-caramel-600 flex-shrink-0" />
+                    <span>Akses & Parkir</span>
+                  </div>
+                  <p className="text-chocolate-600 leading-relaxed">Akses jalan utama yang mudah dijangkau kendaraan</p>
+                </div>
+                <span className="text-[10px] text-caramel-700 font-semibold uppercase tracking-wider mt-2.5">Pusat Kabanjahe</span>
               </div>
             </div>
 
-            {/* Interactive Clean Map Embed / Visualizer */}
-            <div className="relative flex-1 min-h-[320px] bg-cream-200">
+            {/* Interactive Clean Map Embed (Clean, no overlapping overlays) */}
+            <div className="relative flex-1 min-h-[340px] bg-cream-200">
               <iframe
                 title="Peta Lokasi Gelora Bakery Kabanjahe"
                 src="https://maps.google.com/maps?q=Jl.+Kpt.+Bangsi+Sembiring+No.24,+Kabanjahe,+Sumatera+Utara&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                className="w-full h-full min-h-[320px] border-0"
+                className="w-full h-full min-h-[340px] border-0"
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-
-              {/* Floating Pin Tooltip on Map */}
-              <div className="absolute top-4 left-4 bg-cream-50/95 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-md border border-cream-200 text-xs flex items-center gap-2 max-w-xs">
-                <img 
-                  src="/logo.jpg" 
-                  alt="Gelora" 
-                  className="w-8 h-8 rounded-full object-cover border border-caramel-500"
-                />
-                <div>
-                  <p className="font-bold text-chocolate-900">{siteConfig.brand.name}</p>
-                  <p className="text-[11px] text-chocolate-600">No. 24 Jl. Kpt. Bangsi Sembiring</p>
-                </div>
-              </div>
             </div>
 
           </div>
