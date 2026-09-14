@@ -17,46 +17,13 @@ export default function Navbar({ onOpenOrderModal }) {
   }, []);
 
   return (
-    <>
-      {/* Top Heritage Notice Bar */}
-      <div className="bg-chocolate-950 text-cream-200 text-xs py-2 px-4 border-b border-chocolate-800 tracking-wide">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-caramel-500"></span>
-            <span>{siteConfig.brand.motto}</span>
-            <span className="hidden md:inline text-chocolate-400">•</span>
-            <span className="hidden md:inline">{siteConfig.brand.landmark}</span>
-          </div>
-          <div className="flex items-center gap-4 text-chocolate-200 font-medium">
-            <a 
-              href={`tel:${siteConfig.brand.phoneRaw}`} 
-              className="hover:text-cream-50 transition-colors flex items-center gap-1"
-            >
-              <Phone size={12} className="text-caramel-500" />
-              <span>{siteConfig.brand.phone}</span>
-            </a>
-            <span>•</span>
-            <a 
-              href={siteConfig.brand.instagramUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-cream-50 transition-colors flex items-center gap-1"
-            >
-              <InstagramIcon size={12} className="text-caramel-500" />
-              <span>{siteConfig.brand.instagramHandle}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Sticky Navbar */}
-      <header 
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-cream-50/95 backdrop-blur-md shadow-sm border-b border-cream-200 py-3' 
-            : 'bg-cream-50 border-b border-cream-200/70 py-4'
-        }`}
-      >
+    <header 
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-cream-50/95 backdrop-blur-md shadow-sm border-b border-cream-200 py-3' 
+          : 'bg-cream-50 border-b border-cream-200/70 py-4'
+      }`}
+    >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo & Name */}
           <a href="#" className="flex items-center gap-3 group">
@@ -161,6 +128,5 @@ export default function Navbar({ onOpenOrderModal }) {
           </div>
         )}
       </header>
-    </>
   );
 }
