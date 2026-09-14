@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  
+  body {
+    background-color: #FDFBF7;
+    color: #2A170F;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'DM Serif Display', 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Subtle vintage gingham accent ribbon border */
+.gingham-border {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(217, 137, 106, 0.15) 0,
+    rgba(217, 137, 106, 0.15) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F3EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #DFD2BE;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #CCAFA2;
+}
