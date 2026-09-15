@@ -36,7 +36,7 @@ export default function Navbar({ onOpenOrderModal }) {
               <span className="font-display text-xl md:text-2xl text-chocolate-900 font-bold tracking-tight leading-none group-hover:text-caramel-600 transition-colors">
                 {siteConfig.brand.name}
               </span>
-              <span className="text-[11px] font-sans text-chocolate-600 tracking-wider uppercase mt-1">
+              <span className="text-xs font-semibold text-caramel-800 tracking-wider uppercase mt-0.5 font-sans">
                 Kabanjahe • Tanah Karo
               </span>
             </div>

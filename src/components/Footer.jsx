@@ -56,9 +56,9 @@ export default function Footer() {
 
           {/* Quick Links (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="font-serif text-base font-bold text-cream-50 mb-4 tracking-wide">
+            <h3 className="font-serif text-base font-bold text-cream-50 mb-4 tracking-wide">
               Navigasi
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm text-chocolate-300">
               {siteConfig.navLinks.map((link) => (
                 <li key={link.href}>
@@ -75,9 +75,9 @@ export default function Footer() {
 
           {/* Product Categories (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="font-serif text-base font-bold text-cream-50 mb-4 tracking-wide">
+            <h3 className="font-serif text-base font-bold text-cream-50 mb-4 tracking-wide">
               Kategori Produk
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm text-chocolate-300">
               {siteConfig.productCategories.filter(c => c !== "Semua").map((cat) => (
                 <li key={cat}>
@@ -94,9 +94,9 @@ export default function Footer() {
 
           {/* Contact & Store Hours (3 cols) */}
           <div className="lg:col-span-3">
-            <h4 className="font-serif text-base font-bold text-cream-50 mb-4 tracking-wide">
+            <h3 className="font-serif text-base font-bold text-cream-50 mb-4 tracking-wide">
               Toko Kabanjahe
-            </h4>
+            </h3>
             <ul className="space-y-3 text-sm text-chocolate-300">
               <li className="flex items-start gap-2.5">
                 <MapPin size={16} className="text-caramel-500 flex-shrink-0 mt-1" />

@@ -112,13 +112,13 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
                 />
               )}
               <div className="text-xs">
-                <span className="text-caramel-700 font-semibold uppercase tracking-wider block text-[10px]">
+                <span className="text-caramel-800 font-semibold uppercase tracking-wider block text-xs">
                   Produk Terpilih
                 </span>
                 <p className="font-serif text-sm font-bold text-chocolate-900">
                   {selectedProduct.name}
                 </p>
-                <p className="text-chocolate-600 text-[11px]">{selectedProduct.category}</p>
+                <p className="text-chocolate-600 text-xs">{selectedProduct.category}</p>
               </div>
             </div>
           )}
