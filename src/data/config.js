@@ -8,11 +8,9 @@
 export const siteConfig = {
   brand: {
     name: "Gelora Bakery",
-    motto: "Enak, Lezat, Bergizi Sejak Tahun 1975",
+    motto: "Enak, Lezat, Bergizi",
     tagline: "Roti Lembut, Rasa Rumahan yang Selalu Dirindukan.",
-    subtext: "Menyajikan kehangatan aneka roti lembut, snack gurih, dan oleh-oleh homemade khas Kabanjahe sejak 1975. Dibuat fresh setiap hari dengan bahan pilihan dan dedikasi tradisi rasa keluarga.",
-    foundedYear: "1975",
-    heritageYears: "50+",
+    subtext: "Menyajikan kehangatan aneka roti lembut, snack gurih, dan oleh-oleh homemade khas Kabanjahe. Dibuat fresh setiap hari dengan bahan pilihan dan dedikasi tradisi rasa keluarga.",
     locationCity: "Kabanjahe",
     fullAddress: "Jl. Kpt. Bangsi Sembiring No.24, Kabanjahe",
     landmark: "Dekat Tugu Bambu Runcing / Apotik Bethesda",
@@ -58,8 +56,8 @@ export const siteConfig = {
       id: "lokal-kabanjahe",
       title: "Bakery Lokal Kabanjahe",
       tagline: "Tumbuh Bersama Warga Karo",
-      description: "Berdiri sejak tahun 1975 di pusat Kabanjahe. Menjadi pilihan sarapan keluarga, sajian acara adat, hingga buah tangan terpercaya bagi wisatawan yang singgah di Tanah Karo.",
-      badge: "Sejak 1975",
+      description: "Hadir melayani masyarakat di pusat Kabanjahe. Menjadi pilihan sarapan keluarga, sajian acara, hingga buah tangan terpercaya bagi yang berkunjung ke Tanah Karo.",
+      badge: "Lokal Kabanjahe",
     },
   ],
 
@@ -133,7 +131,7 @@ export const siteConfig = {
       id: "butter-cake-tradisi",
       name: "Classic Butter Cake Tradisi",
       category: "Butter Cake",
-      badge: "Heritage 1975",
+      badge: "Resep Klasik",
       description: "Kue mentega legendaris dengan aroma wangi butter asli yang semerbak, tekstur padat lembut, dan rasa manis legit yang elegan.",
       image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
       highlight: "Menggunakan mentega berkualitas tinggi",
@@ -250,13 +248,15 @@ export function getContactAction(customMessage = "") {
     };
   }
 
-  // Fallback ke Instagram DM (Auto direct chat via ig.me)
+  // Fallback ke Instagram
+  const profileUrl = siteConfig.brand.instagramUrl || `https://www.instagram.com/${instagramHandle.replace('@', '')}/`;
   const dmUrl = siteConfig.brand.instagramDmUrl || `https://ig.me/m/${instagramHandle.replace('@', '')}`;
   return {
     type: "instagram",
-    label: `Kirim DM Instagram (${instagramHandle})`,
-    shortLabel: "Instagram DM",
-    url: dmUrl,
+    label: `Buka Instagram (${instagramHandle})`,
+    shortLabel: "Instagram",
+    url: profileUrl,
+    dmUrl: dmUrl,
     target: "_blank",
     rel: "noopener noreferrer",
     detail: instagramHandle,

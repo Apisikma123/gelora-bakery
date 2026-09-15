@@ -37,7 +37,7 @@ export default function Navbar({ onOpenOrderModal }) {
                 {siteConfig.brand.name}
               </span>
               <span className="text-[11px] font-sans text-chocolate-600 tracking-wider uppercase mt-1">
-                Kabanjahe • Sejak 1975
+                Kabanjahe • Tanah Karo
               </span>
             </div>
           </a>

@@ -32,7 +32,7 @@ export default function About() {
                   Enak, Lezat, Bergizi
                 </p>
                 <p className="text-[10px] text-caramel-700 font-sans mt-0.5">
-                  Sejak Tahun 1975
+                  Kabanjahe, Tanah Karo
                 </p>
               </div>
 
@@ -55,11 +55,11 @@ export default function About() {
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-200/80 text-chocolate-800 text-xs font-semibold uppercase tracking-wider mb-4">
               <Award size={14} className="text-caramel-600" />
-              <span>Warisan Rasa Kabanjahe</span>
+              <span>Rasa Khas Kabanjahe</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-chocolate-950 font-bold mb-6 leading-tight">
-              Menjaga Kehangatan Dapur Rumahan Selama Puluhan Tahun
+              Menjaga Kehangatan Dapur Rumahan di Kabanjahe
             </h2>
 
             <div className="space-y-4 text-chocolate-700 text-base leading-relaxed font-sans">
@@ -67,7 +67,7 @@ export default function About() {
                 Perjalanan <strong className="text-chocolate-900 font-semibold">{siteConfig.brand.name}</strong> berakar dari niat sederhana: menghadirkan roti yang benar-benar lembut, bergizi, dan beraroma khas untuk masyarakat Kabanjahe dan sekitarnya.
               </p>
               <p>
-                Berdiri di <strong className="text-chocolate-900 font-semibold">{siteConfig.brand.fullAddress}</strong> sejak tahun <strong>{siteConfig.brand.foundedYear}</strong>, kami telah menjadi bagian dari memori rasa banyak keluarga di Tanah Karo—menemani sarapan pagi dengan teh hangat, sajian pesta adat, hingga oleh-oleh berharga bagi pelancong.
+                Hadir di <strong className="text-chocolate-900 font-semibold">{siteConfig.brand.fullAddress}</strong>, kami telah menjadi bagian dari memori rasa banyak keluarga di Tanah Karo—menemani sarapan pagi dengan teh hangat, sajian pesta adat, hingga oleh-oleh berharga bagi pelancong.
               </p>
               <p>
                 Bagi kami, memanggang roti bukan sekadar memproduksi dalam jumlah massal, melainkan merawat resep rumahan (homemade) di setiap loyang panggangan. Kami mempertahankan bahan-bahan berkualitas tanpa mengambil jalan pintas pengawet berlebihan, agar setiap suapan selalu menghadirkan rasa yang akrab dan dirindukan.
@@ -77,8 +77,8 @@ export default function About() {
             {/* Quick Stats / Anchors */}
             <div className="mt-8 pt-6 border-t border-cream-200 grid grid-cols-3 gap-4 text-center">
               <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                <span className="font-display text-2xl sm:text-3xl text-caramel-700 font-bold block">1975</span>
-                <span className="text-xs text-chocolate-600 font-medium">Tahun Berdiri</span>
+                <span className="font-display text-2xl sm:text-3xl text-caramel-700 font-bold block">Fresh</span>
+                <span className="text-xs text-chocolate-600 font-medium">Dipanggang Harian</span>
               </div>
               <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
                 <span className="font-display text-2xl sm:text-3xl text-caramel-700 font-bold block">100%</span>
@@ -86,7 +86,7 @@ export default function About() {
               </div>
               <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
                 <span className="font-display text-2xl sm:text-3xl text-caramel-700 font-bold block">Kabanjahe</span>
-                <span className="text-xs text-chocolate-600 font-medium">Pusat Tradisi</span>
+                <span className="text-xs text-chocolate-600 font-medium">Bakery Lokal</span>
               </div>
             </div>
 

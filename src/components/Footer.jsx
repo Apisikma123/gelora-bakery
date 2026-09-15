@@ -31,7 +31,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-chocolate-300 leading-relaxed max-w-sm mb-6">
-              Menghadirkan kehangatan roti lembut, snack gurih, dan oleh-oleh homemade khas Kabanjahe sejak 1975. Dibuat fresh setiap hari dengan bahan pilihan dan cinta rasa tradisi.
+              Menghadirkan kehangatan roti lembut, snack gurih, dan oleh-oleh homemade khas Kabanjahe. Dibuat fresh setiap hari dengan bahan pilihan dan cinta rasa tradisi.
             </p>
 
             <div className="flex items-center gap-3 text-cream-50">

@@ -27,7 +27,7 @@ export default function Hero({ onOpenOrderModal }) {
 
             {/* Subtext */}
             <p className="text-base sm:text-lg text-chocolate-700 leading-relaxed max-w-2xl mb-8 font-sans">
-              Menyajikan kehangatan aneka roti lembut, snack gurih, dan oleh-oleh homemade khas Kabanjahe sejak 1975. Dibuat fresh setiap hari dengan bahan pilihan dan dedikasi tradisi rasa keluarga.
+              Menyajikan kehangatan aneka roti lembut, snack gurih, dan oleh-oleh homemade khas Kabanjahe. Dibuat fresh setiap hari dengan bahan pilihan dan dedikasi tradisi rasa keluarga.
             </p>
 
             {/* CTAs */}
@@ -53,7 +53,7 @@ export default function Hero({ onOpenOrderModal }) {
             <div className="pt-6 border-t border-cream-200/90 w-full grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm text-chocolate-800">
               <div className="flex items-center gap-2">
                 <CheckCircle2 size={18} className="text-caramel-600 flex-shrink-0" />
-                <span className="font-medium">Resep Tradisi Sejak 1975</span>
+                <span className="font-medium">Resep Tradisi Rumahan</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 size={18} className="text-caramel-600 flex-shrink-0" />
@@ -105,7 +105,7 @@ export default function Hero({ onOpenOrderModal }) {
                     {siteConfig.brand.name}
                   </span>
                   <span className="text-[11px] text-chocolate-600 font-sans mt-0.5">
-                    Sejak Tahun 1975
+                    Enak, Lezat, Bergizi
                   </span>
                   <span className="text-[10px] text-caramel-600 font-medium">
                     Kabanjahe, Tanah Karo

@@ -16,7 +16,7 @@ export default function Advantages() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-semibold uppercase tracking-wider text-caramel-600 bg-caramel-50 px-3.5 py-1.5 rounded-full border border-caramel-200">
-            Cita Rasa Terpercaya Sejak 1975
+            Cita Rasa Terpercaya Kabanjahe
           </span>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-chocolate-950 font-bold mt-4 mb-4">
             Mengapa Memilih Gelora Bakery?

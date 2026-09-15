@@ -44,7 +44,7 @@ export default function App() {
         {/* 4. Keunggulan (Roti lembut & nikmat, Homemade, Bakery lokal Kabanjahe) */}
         <Advantages />
 
-        {/* 5. Tentang Gelora Bakery (Sejak 1975) */}
+        {/* 5. Tentang Gelora Bakery */}
         <About />
 
         {/* 6. Instagram Gallery + Link @gelorabakery.id */}

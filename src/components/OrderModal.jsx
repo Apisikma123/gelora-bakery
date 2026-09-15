@@ -44,8 +44,8 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
     },
     {
       key: 'butter-cake',
-      label: 'Butter Cake Tradisi 1975',
-      text: 'Halo Gelora Bakery Kabanjahe! Saya tertarik memesan Classic Butter Cake Tradisi resep asli 1975. Apakah hari ini tersedia loyang fresh atau bisa dipesan untuk diambil kapan? Terima kasih!',
+      label: 'Classic Butter Cake',
+      text: 'Halo Gelora Bakery Kabanjahe! Saya tertarik memesan Classic Butter Cake Tradisi resep klasik. Apakah hari ini tersedia loyang fresh atau bisa dipesan untuk diambil kapan? Terima kasih!',
     },
   ];
 
@@ -178,10 +178,13 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
             )}
           </div>
 
-          {/* Primary Action Button: Auto-Copy & Open Direct DM */}
+          {/* Primary Action Button: Auto-Copy & Open Instagram */}
           <div className="space-y-2.5 pt-1">
-            <button
-              onClick={handleSendToDm}
+            <a
+              href={contact.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleCopy}
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-caramel-600 hover:bg-caramel-500 text-cream-50 font-semibold text-sm transition-all shadow-md active:scale-[0.99] text-center"
             >
               {contact.type === 'whatsapp' ? (
@@ -192,11 +195,25 @@ export default function OrderModal({ isOpen, onClose, selectedProduct }) {
               ) : (
                 <>
                   <InstagramIcon size={18} />
-                  <span>Kirim DM Instagram (Auto-Copy & Buka Chat)</span>
+                  <span>Buka Instagram & Salin Pesan</span>
                 </>
               )}
               <Send size={15} className="ml-1" />
-            </button>
+            </a>
+
+            {/* Direct DM Link Alternative for mobile app */}
+            {contact.type === 'instagram' && (
+              <a
+                href={siteConfig.brand.instagramDmUrl || `https://ig.me/m/${siteConfig.brand.instagramHandle.replace('@', '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleCopy}
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-chocolate-900 hover:bg-chocolate-800 text-cream-50 font-semibold text-xs transition-colors text-center"
+              >
+                <InstagramIcon size={14} className="text-caramel-400" />
+                <span>Buka Direct Chat Aplikasi (ig.me/m/...)</span>
+              </a>
+            )}
 
             {/* Direct Phone Call Option */}
             <a
