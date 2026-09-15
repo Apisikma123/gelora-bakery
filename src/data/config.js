@@ -97,7 +97,7 @@ export const siteConfig = {
       category: "Roti Manis",
       badge: "Signature",
       description: "Roti manis lembut berpadu dengan limpahan kismis pilihan yang asam manis segar di setiap irisannya.",
-      image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=800&q=80",
+      image: "/roti-kismis.jpg",
       highlight: "Kismis manis alami berkualitas",
     },
     {
@@ -169,7 +169,7 @@ export const siteConfig = {
       category: "Oleh-Oleh",
       badge: "Buah Tangan",
       description: "Bolu gulung berpori halus dengan isian selai moka atau keju spesial. Teksturnya lumer dan menjadi oleh-oleh wajib khas Kabanjahe.",
-      image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80",
+      image: "/bolu-gulung.jpg",
       highlight: "Kemasan rapi siap dibawa perjalanan",
     },
     {
