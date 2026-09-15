@@ -31,7 +31,7 @@ export default function Advantages() {
           {siteConfig.advantages.map((adv) => (
             <div
               key={adv.id}
-              className="flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-cream-100/60 border border-cream-300"
+              className="flex flex-col justify-between p-2 md:p-4"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

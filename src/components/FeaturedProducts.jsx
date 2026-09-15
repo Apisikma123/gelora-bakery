@@ -10,7 +10,7 @@ export default function FeaturedProducts({ onSelectProductForInquiry }) {
     : siteConfig.products.filter(item => item.category === activeCategory);
 
   return (
-    <section id="produk" className="py-20 bg-cream-100/50 border-b border-cream-300/70">
+    <section id="produk" className="py-20 bg-white border-b border-cream-300/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -35,7 +35,7 @@ export default function FeaturedProducts({ onSelectProductForInquiry }) {
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${
                 activeCategory === cat
                   ? 'bg-chocolate-900 text-white shadow-sm'
-                  : 'bg-cream-50 text-chocolate-800 hover:bg-cream-200 border border-cream-300'
+                  : 'bg-white text-chocolate-800 hover:bg-cream-100 border border-cream-300'
               }`}
             >
               {cat}

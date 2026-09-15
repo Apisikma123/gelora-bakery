@@ -5,7 +5,7 @@ import { InstagramIcon } from './Icons';
 
 export default function LocationSection() {
   return (
-    <section id="lokasi" className="py-20 bg-cream-100/50 border-b border-cream-300/70">
+    <section id="lokasi" className="py-20 border-b border-cream-300/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

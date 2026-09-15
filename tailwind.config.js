@@ -39,8 +39,8 @@ export default {
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        display: ['"DM Serif Display"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['"Fraunces"', '"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"Outfit"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
     },
   },

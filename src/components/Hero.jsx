@@ -4,7 +4,7 @@ import { ArrowDown, CheckCircle2, ChevronRight, Clock } from 'lucide-react';
 
 export default function Hero({ onOpenOrderModal }) {
   return (
-    <section className="relative bg-cream-50 pt-10 pb-16 lg:pt-20 lg:pb-24 border-b border-cream-300/80">
+    <section className="relative pt-10 pb-16 lg:pt-20 lg:pb-24 border-b border-cream-300/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
           
